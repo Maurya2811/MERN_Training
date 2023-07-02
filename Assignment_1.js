@@ -65,40 +65,31 @@ This is done by periodically removing one letter from the string end and attachi
 output = sbrainmentor,...., brainmentors
 */
 
-function calculate() {
-    let word = "brainmentors";
-
-    function rotate() {
-        word = word[word.length - 1] + word.substring(0, word.length - 1);
-        console.log(word);
-    }
-
-    for (let i = 0; i < word.length; i++) {
-        setTimeout(rotate, i * 200);
-    }
+function rotateStringRight(input) {
+  for(var i=0;i<input.length;i++){
+   input = input.charAt(input.length - 1) + input.slice(0, input.length - 1);
+  console.log(input); 
+  }
 }
-calculate();
+var input = 'brainmentors';
+ rotateStringRight(input);
 
 /* ================================================================================================= */
 
 // 5.WAP to find out if 1st January will be a Sunday between 2000 and 2030
 
-function findSunday() {
-    const currY = new Date();
-
-    let y = 2000;
-    currY.setFullYear(y);
-    currY.setDate(1);
-    currY.setMonth(0);
-
-    while (y <= 2030) {
-        console.log();
-        let currD = currY.getDay();
-        if (currD === 0) {
-            console.log("Year :", y, "having the Sunday on 1st January");
-        }
-        y = y + 1;
-        currY.setFullYear(y);
-    }
+function findSun(){
+// Loop through the years from 2000 to 2030
+for (var year = 2000; year <= 2030; year++) {
+  // Create a new Date object for January 1st of the current year
+  const date = new Date(year, 0, 1);
+  
+  // Get the day of the week (0 for Sunday, 1 for Monday, etc.)
+  const dayOfWeek = date.getDay();
+  
+  // Check if January 1st is a Sunday (dayOfWeek = 0)
+  if (dayOfWeek === 0) {
+    console.log(`January 1st, ${year} is a Sunday`);
+  }
 }
-findSunday();
+}
